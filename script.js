@@ -105,10 +105,11 @@ function updateButtonAppearance() {
 
 function copyFiles() {
     const jsonData = JSON.parse(localStorage.getItem('imageActions')) || {};
-
+    console.log(jsonData)
+    const formattedJson = JSON.stringify(jsonData, null, 2);
     if (jsonData) {
         // Create a Blob from the JSON string
-        const blob = new Blob([jsonData], { type: "application/json" });
+        const blob = new Blob([formattedJson], { type: "application/json" });
 
         // Create a temporary <a> element
         const a = document.createElement('a');

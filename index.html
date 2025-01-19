@@ -59,7 +59,7 @@
     </div>
     <div class="container transition" id="carousel-div">
     <button class="btn btn-warning copy-btn" onclick="copyFiles()">Copy files</button>
-        <h3 class="text-center">Image Carousel</h3>
+        <h3 class="text-center" id="imageCount">Image Count : 1</h3>
         <div id="imageCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" id="carouselItems">
                 <!-- Carousel items will be dynamically added here -->
@@ -82,13 +82,33 @@
 <script>
     $('#next-btn').on('click', function() {
         // Trigger the next slide of the carousel
+
         $('#imageCarousel').carousel('next');
+
+        let currentValue = parseInt($('input[name="currImageCount"]').val(), 10);
+        console.log(currentValue)
+        // Increment the value
+        let newValue = currentValue + 1;
+
+        // Set the new value back to the input field
+        $('input[name="currImageCount"]').val(newValue);
+        $('#imageCount').text(`Image Count : ${newValue}`)
 
     });
 
     $('#prev-btn').on('click', function() {
         // Trigger the next slide of the carousel
         $('#imageCarousel').carousel('prev');
+
+        let currentValue = parseInt($('input[name="currImageCount"]').val(), 10);
+
+        // Increment the value
+        let newValue = currentValue - 1;
+
+        // Set the new value back to the input field
+        $('input[name="currImageCount"]').val(newValue);
+        $('#imageCount').text(`Image Count : ${newValue}`)
+
     });
    
     </script>
